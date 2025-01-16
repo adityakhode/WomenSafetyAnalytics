@@ -45,6 +45,7 @@ class HOSPITAL:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             self.connection.rollback()
+        hospital.close_connection()
 
     # Method to insert login details into the 'login' table
     def insert_login(self, email, password):
@@ -59,7 +60,8 @@ class HOSPITAL:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             self.connection.rollback()
-
+        hospital.close_connection()
+    
     # Method to insert registration details into the 'hospReggstrationDetails' table
     def insert_registration(self, hospId, hospName, hospAddress, hospCity, hospState, hospLicenceNo, hospLicencePhoto, drAdharNo, drAdharPhoto):
         try:
@@ -73,7 +75,8 @@ class HOSPITAL:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             self.connection.rollback()
-
+        hospital.close_connection()
+    
     # Method to close the connection
     def close_connection(self):
         self.cursor.close()
